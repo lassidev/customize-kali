@@ -1,9 +1,10 @@
 #!/usr/bin/zsh
 
 
-echo 'Updating system...'
+echo 'Updating system and installing programs...'
+echo 'This might take a while. Get a coffee!'
 #sudo apt update && sudo apt full-upgrade -y && sudo apt install -y python3-venv seclists spice-vdagent
-sudo apt update && sudo apt full-upgrade -y && sudo apt install -y python3-venv spice-vdagent
+sudo apt update -yqq && sudo apt full-upgrade -yqq && sudo apt install -yqq python3-venv spice-vdagent
 
 
 echo 'Adding user to autologin...'
@@ -12,10 +13,10 @@ sudo gpasswd -a $USER autologin
 sudo bash -c 'cat<<EOF >> /etc/lightdm/lightdm.conf
 
 #
-# Personal customization (lassi)
+# Personal customization ($USER)
 #
 [Seat:*]
-autologin-user=lassi
+autologin-user=$USER
 EOF'
 
 
@@ -25,8 +26,8 @@ sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub && sudo update
 
 echo 'Customizing ZSH...'
 cp ~/.zshrc ~/.zsrch.bak
-sed -i 's/NEWLINE_BEFORE_PROMPT=yes/NEWLINE_BEFORE_PROMPT=no/g' ~/.zshrc 
 sed -i 's/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g' ~/.zshrc
+sed -i 's/NEWLINE_BEFORE_PROMPT=yes/NEWLINE_BEFORE_PROMPT=no/g' ~/.zshrc 
 cat <<EOF >> ~/.zshrc
 
 # ---------------------------------- #
@@ -82,7 +83,7 @@ export EDITOR=vim
 # -------- END CUSTOMIZATION ------- #
 # ---------------------------------- #
 EOF
-source ~/.zshrc
+zsh source ~/.zshrc
 
 
 echo 'Installing pip binaries...'
@@ -94,3 +95,8 @@ pip install pwncat-cs
 deactivate
 cd
 echo 'Pwncat installed!'
+
+
+echo 'Everything done, rebooting system...'
+sleep 5
+sudo reboot now
