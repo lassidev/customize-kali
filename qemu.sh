@@ -1,5 +1,12 @@
 #!/usr/bin/zsh
 
+if [ "$EUID" == 0 ]
+  then echo "Please don't run me as root"
+  exit 1
+fi
+
+# Get sudo token
+sudo -l 1>/dev/null
 
 echo 'Updating system and installing programs...'
 echo 'This might take a while. Get a coffee!'
