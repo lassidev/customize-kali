@@ -21,8 +21,11 @@ EOF
 echo 'Stupid GUIs!'
 
 echo 'Set the power management as you like and close the window'
-
 xfce4-power-manager-settings 2>/dev/null
+
+echo 'Set Window Buttons as you like and close the window'
+xfce4-panel -p
+
 
 echo 'Opening Firefox, please install the plugins in tabs and close them'
 firefox -new-tab -url https://addons.mozilla.org/fi/firefox/addon/pwnfox/ -new-tab -url https://addons.mozilla.org/fi/firefox/addon/wappalyzer/ 2>/dev/null
