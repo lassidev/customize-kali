@@ -21,14 +21,14 @@ EOF
 
 
 echo 'Setting GRUB timeout to 0...'
-sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub && sudo update-grub
+sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub && sudo update-grub 1>/dev/null
 
 
 echo 'Customizing ZSH...'
 cp ~/.zshrc ~/.zsrch.bak
 sed -i 's/PROMPT_ALTERNATIVE=twoline/PROMPT_ALTERNATIVE=oneline/g' ~/.zshrc
 sed -i 's/NEWLINE_BEFORE_PROMPT=yes/NEWLINE_BEFORE_PROMPT=no/g' ~/.zshrc 
-cat <<EOF >> ~/.zshrc
+sudo tee -a ~/.zshrc << EOF >/dev/null 
 
 # ---------------------------------- #
 # --------- CUSTOMIZATION ---------- #
@@ -91,7 +91,7 @@ echo 'Installing pip binaries...'
 cd ~/.virtualenvs
 python3 -m venv pwncat
 source ./pwncat/bin/activate
-pip install pwncat-cs
+pip install -q pwncat-cs
 deactivate
 cd
 echo 'Pwncat installed!'
