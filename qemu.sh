@@ -9,14 +9,14 @@ sudo apt update && sudo apt full-upgrade -y && sudo apt install -y python3-venv 
 echo 'Adding user to autologin...'
 sudo groupadd -r autologin
 sudo gpasswd -a $USER autologin
-cat<<EOF | sudo tee -a /etc/lightdm/lightdm.conf
+sudo bash -c 'cat<<EOF >> /etc/lightdm/lightdm.conf
 
 #
 # Personal customization (lassi)
 #
 [Seat:*]
 autologin-user=lassi
-EOF
+EOF'
 
 
 echo 'Setting GRUB timeout to 0...'
@@ -83,3 +83,14 @@ export EDITOR=vim
 # ---------------------------------- #
 EOF
 source ~/.zshrc
+
+
+echo 'Installing pip binaries...'
+
+cd ~/.virtualenvs
+python3 -m venv pwncat
+source ./pwncat/bin/activate
+pip install pwncat-cs
+deactivate
+cd
+echo 'Pwncat installed!'
