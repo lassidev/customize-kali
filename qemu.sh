@@ -134,6 +134,17 @@ for program in kali-burpsuite terminator firefox-esr brave-browser; do
 done
 
 
-echo 'Everything done, rebooting system...'
-sleep 5
+echo 'Everything done. You might want to do additional customizations, such as the top bar, yourself.'
+echo 'TODO Obsidian, tmux, so much else'
+
+read -r -p "Reboot? [y/N] " response
+case "$response" in
+    [yY][eE][sS]|[yY]) 
+        sudo reboot now
+        ;;
+    *)
+        exit 1
+        ;;
+esac
+
 sudo reboot now
