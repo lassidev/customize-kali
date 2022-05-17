@@ -28,7 +28,7 @@ EOF
 
 
 echo 'Setting GRUB timeout to 0...'
-sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub && sudo update-grub 1>/dev/null
+sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub && sudo update-grub &>/dev/null
 
 
 echo 'Customizing ZSH...'
@@ -95,7 +95,7 @@ zsh source ~/.zshrc
 
 echo 'Installing pip binaries...'
 
-cd ~/.virtualenvs
+mkdir ~/.virtualenvs && cd ~/.virtualenvs
 python3 -m venv pwncat
 source ./pwncat/bin/activate
 pip install -q pwncat-cs
