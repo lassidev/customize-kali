@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 
 if [ "$EUID" == 0 ]
-  then echo "Please don't run me as root"
+  then echo "Please don't run me as root :("
   exit 1
 fi
 
