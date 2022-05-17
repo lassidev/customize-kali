@@ -18,13 +18,16 @@ o888o `Y888""8o 8""888P' 8""888P' o888o        YooooooP       o888o o888o `Y888"
                                                                                                                                                                                       
 EOF
 
-# Get sudo token
-sudo -l 1>/dev/null
+echo 'Opening Firefox, please install the plugins in tabs and close them'
+firefox -new-tab -url https://addons.mozilla.org/fi/firefox/addon/pwnfox/ -new-tab -url https://addons.mozilla.org/fi/firefox/addon/wappalyzer/
+
+echo 'Installing Brave Browser. Dont forget to harden!'
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 
 echo 'Updating system and installing programs...'
-echo 'This might take a while. Get a coffee!'
-#sudo apt update && sudo apt full-upgrade -y && sudo apt install -y python3-venv seclists spice-vdagent
-sudo apt update -yqq && sudo apt full-upgrade -yqq && sudo apt install -yqq python3-venv spice-vdagent
+#add seclists below when done testing
+sudo apt update -yqq && echo 'This might take a while!' && sudo apt full-upgrade -yqq && sudo apt install -yqq python3-venv spice-vdagent terminator brave-browser
 
 
 # Autologin
@@ -82,14 +85,12 @@ pwncat () {
 source ~/.virtualenvs/pwncat/bin/activate && pwncat-cs "\$@" && deactivate
 }
 
-
 # ------- PENTEST ALIASES -----#
 # TODO make something more reliable
 
 # Copy common files to current dir
 alias cplinpeas='wget -q https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh; echo "Lol script kiddie!"'
 alias cpwinpeas='wget -q https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEAS.bat; echo "Lol script kiddie!"'
-
 
 # ---------- MISC ------------- #
 
@@ -98,6 +99,10 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 # EDITOR
 export EDITOR=vim
+
+# Disable power management
+xfce4-power-manager -q
+xset -dpms
 
 # ---------------------------------- #
 # -------- END CUSTOMIZATION ------- #
@@ -113,6 +118,12 @@ pip install -q pwncat-cs
 deactivate
 cd
 echo 'Pwncat installed!'
+
+echo 'Installing startup programs...'
+
+for program in kali-burpsuite terminator firefox-esr brave-browser; do
+  cp /usr/share/applications/$program.desktop ~/.config/autostart/;
+done
 
 
 echo 'Everything done, rebooting system...'
