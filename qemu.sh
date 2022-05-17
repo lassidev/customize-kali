@@ -5,7 +5,7 @@ if [ "$EUID" == 0 ]
   exit 1
 fi
 
-cat << EOF
+cat << "EOF"
 
 oooo                               o8o         .oooooo.       oooo                  oooo   o8o  
 `888                               `"'        d'     `b       `888                  `888   `"'  
