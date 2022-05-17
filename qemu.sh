@@ -23,12 +23,14 @@ echo 'Stupid GUIs!'
 echo 'Set the power management as you like and close the window'
 xfce4-power-manager-settings 2>/dev/null
 
+
 echo 'Set Window Buttons as you like and close the window'
 xfce4-panel -p
 
 
 echo 'Opening Firefox, please install the plugins in tabs and close them'
 firefox -new-tab -url https://addons.mozilla.org/fi/firefox/addon/pwnfox/ -new-tab -url https://addons.mozilla.org/fi/firefox/addon/wappalyzer/ 2>/dev/null
+
 
 echo 'Installing Brave Browser. Dont forget to harden!'
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
