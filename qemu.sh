@@ -90,8 +90,6 @@ export EDITOR=vim
 # -------- END CUSTOMIZATION ------- #
 # ---------------------------------- #
 EOF
-zsh source ~/.zshrc
-
 
 echo 'Installing pip binaries...'
 
