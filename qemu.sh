@@ -2,7 +2,8 @@
 
 
 echo 'Updating system...'
-sudo apt update && sudo apt full-upgrade -y && sudo apt install -y python3-venv seclists spice-vdagent
+#sudo apt update && sudo apt full-upgrade -y && sudo apt install -y python3-venv seclists spice-vdagent
+sudo apt update && sudo apt full-upgrade -y && sudo apt install -y python3-venv spice-vdagent
 
 
 echo 'Adding user to autologin...'
