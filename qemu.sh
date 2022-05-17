@@ -146,5 +146,3 @@ case "$response" in
         exit 1
         ;;
 esac
-
-sudo reboot now
