@@ -23,11 +23,14 @@ firefox -new-tab -url https://addons.mozilla.org/fi/firefox/addon/pwnfox/ -new-t
 
 echo 'Installing Brave Browser. Dont forget to harden!'
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+sudo tee /etc/apt/sources.list.d/brave-browser-release.list << EOF >/dev/null
+deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
+EOF
+
 
 echo 'Updating system and installing programs...'
 #add seclists below when done testing
-sudo apt update -qq && echo 'This might take a while!' && sudo apt full-upgrade -qq && sudo apt install -qq python3-venv spice-vdagent terminator brave-browser
+sudo apt -qq update && sudo apt -qq full-upgrade && sudo apt -qq install python3-venv spice-vdagent terminator brave-browser
 
 
 # Autologin
