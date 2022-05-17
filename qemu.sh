@@ -30,7 +30,7 @@ EOF
 
 echo 'Updating system and installing programs...'
 #add seclists below when done testing
-sudo apt -qq update && sudo apt -qq full-upgrade && sudo apt -qq install python3-venv spice-vdagent terminator brave-browser
+sudo apt -qq update -y && sudo apt -qq full-upgrade -y && sudo apt -qq install -y python3-venv spice-vdagent terminator brave-browser
 
 
 # Autologin
