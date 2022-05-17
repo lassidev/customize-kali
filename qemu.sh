@@ -10,14 +10,14 @@ sudo apt update -yqq && sudo apt full-upgrade -yqq && sudo apt install -yqq pyth
 echo 'Adding user to autologin...'
 sudo groupadd -r autologin
 sudo gpasswd -a $USER autologin
-sudo bash -c 'cat<<EOF >> /etc/lightdm/lightdm.conf
+sudo tee -a /etc/lightdm/lightdm.conf << EOF >/dev/null
 
 #
 # Personal customization ($USER)
 #
 [Seat:*]
 autologin-user=$USER
-EOF'
+EOF
 
 
 echo 'Setting GRUB timeout to 0...'
