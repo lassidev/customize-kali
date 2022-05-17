@@ -5,6 +5,19 @@ if [ "$EUID" == 0 ]
   exit 1
 fi
 
+cat << EOF
+
+oooo                               o8o         .oooooo.       oooo                  oooo   o8o  
+`888                               `"'        d'     `b       `888                  `888   `"'  
+ 888   .oooo.    .oooo.o  .oooo.o oooo       d' .d"bd  8       888  oooo   .oooo.    888  oooo  
+ 888  `P  )88b  d88(  "8 d88(  "8 `888       8  8. 8  .d       888 .8P'   `P  )88b   888  `888  
+ 888   .oP"888  `"Y88b.  `"Y88b.   888       Y.  YoP"b'        888888.     .oP"888   888   888  
+ 888  d8(  888  o.  )88b o.  )88b  888        8.      .8       888 `88b.  d8(  888   888   888  
+o888o `Y888""8o 8""888P' 8""888P' o888o        YooooooP       o888o o888o `Y888""8o o888o o888o 
+                                                                                                
+                                                                                                                                                                                      
+EOF
+
 # Get sudo token
 sudo -l 1>/dev/null
 
