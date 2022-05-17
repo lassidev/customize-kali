@@ -19,7 +19,7 @@ o888o `Y888""8o 8""888P' 8""888P' o888o        YooooooP       o888o o888o `Y888"
 EOF
 
 echo 'Opening Firefox, please install the plugins in tabs and close them'
-firefox -new-tab -url https://addons.mozilla.org/fi/firefox/addon/pwnfox/ -new-tab -url https://addons.mozilla.org/fi/firefox/addon/wappalyzer/
+firefox -new-tab -url https://addons.mozilla.org/fi/firefox/addon/pwnfox/ -new-tab -url https://addons.mozilla.org/fi/firefox/addon/wappalyzer/ 2>/dev/null
 
 echo 'Installing Brave Browser. Dont forget to harden!'
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
@@ -27,7 +27,7 @@ echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=
 
 echo 'Updating system and installing programs...'
 #add seclists below when done testing
-sudo apt update -yqq && echo 'This might take a while!' && sudo apt full-upgrade -yqq && sudo apt install -yqq python3-venv spice-vdagent terminator brave-browser
+sudo apt update -qq && echo 'This might take a while!' && sudo apt full-upgrade -qq && sudo apt install -qq python3-venv spice-vdagent terminator brave-browser
 
 
 # Autologin
@@ -120,7 +120,7 @@ cd
 echo 'Pwncat installed!'
 
 echo 'Installing startup programs...'
-
+mkdir -p ~/.config/autostart
 for program in kali-burpsuite terminator firefox-esr brave-browser; do
   cp /usr/share/applications/$program.desktop ~/.config/autostart/;
 done
