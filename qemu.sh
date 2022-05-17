@@ -27,7 +27,7 @@ echo 'This might take a while. Get a coffee!'
 sudo apt update -yqq && sudo apt full-upgrade -yqq && sudo apt install -yqq python3-venv spice-vdagent
 
 
-echo 'Adding user to autologin...'
+# Autologin
 sudo groupadd -r autologin
 sudo gpasswd -a $USER autologin
 sudo tee -a /etc/lightdm/lightdm.conf << EOF >/dev/null
