@@ -18,6 +18,12 @@ o888o `Y888""8o 8""888P' 8""888P' o888o        YooooooP       o888o o888o `Y888"
                                                                                                                                                                                       
 EOF
 
+echo 'Stupid GUIs!'
+
+echo 'Set the power management as you like'
+
+xfce4-power-manager-settings 2>/dev/null
+
 echo 'Opening Firefox, please install the plugins in tabs and close them'
 firefox -new-tab -url https://addons.mozilla.org/fi/firefox/addon/pwnfox/ -new-tab -url https://addons.mozilla.org/fi/firefox/addon/wappalyzer/ 2>/dev/null
 
@@ -103,9 +109,8 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 # EDITOR
 export EDITOR=vim
 
-# Disable power management
-xfce4-power-manager -q
-xset -dpms
+# Stupid power management
+xset s off -dpms
 
 # ---------------------------------- #
 # -------- END CUSTOMIZATION ------- #
