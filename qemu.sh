@@ -42,7 +42,7 @@ EOF
 
 echo 'Updating system and installing programs...'
 #add seclists below when done testing
-sudo apt -qq update -y && sudo apt -qq full-upgrade -y && sudo apt -qq install -y python3-venv spice-vdagent terminator brave-browser
+sudo apt -qq update -y && sudo apt -qq full-upgrade -y && sudo apt -qq install -y python3-venv spice-vdagent terminator brave-browser flatpak
 
 
 # Autologin
@@ -133,12 +133,18 @@ deactivate
 cd
 echo 'Pwncat installed!'
 
+echo 'Installing flatpaks...'
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install -y flathub md.obsidian.Obsidian
+
+
 echo 'Installing startup programs...'
 mkdir -p ~/.config/autostart
 for program in kali-burpsuite terminator firefox-esr brave-browser; do
   cp /usr/share/applications/$program.desktop ~/.config/autostart/;
 done
-
+touch ~/.config/autostart/obsidian.desktop
+ln -sf /var/lib/flatpak/app/md.obsidian.Obsidian/current/active/export/share/applications/md.obsidian.Obsidian.desktop ~/.config/autostart/obsidian.desktop
 
 echo 'Everything done. You might want to do additional customizations, such as the top bar, yourself.'
 echo 'TODO Obsidian, tmux, so much else'
