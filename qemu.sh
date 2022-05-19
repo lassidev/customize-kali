@@ -41,8 +41,7 @@ EOF
 
 
 echo 'Updating system and installing programs...'
-#add seclists below when done testing
-sudo apt -qq update -y && sudo apt -qq full-upgrade -y && sudo apt -qq install -y python3-venv spice-vdagent terminator brave-browser flatpak
+sudo apt -qq update -y && sudo apt -qq full-upgrade -y && sudo apt -qq install -y python3-venv spice-vdagent terminator brave-browser flatpak seclists feroxbuster
 
 
 # Autologin
