@@ -85,13 +85,13 @@ alias rs='xrandr --output Virtual-1 --auto'
 # --------- HACKING LAB PROVIDERS ------------- #
 
 # Upgrade and connect to TryHackMe
-alias THM='sudo apt update && sudo apt full-upgrade -y && sudo -b openvpn /home/lassi/Documents/tryhackme/lassi.ovpn'
+alias THM='sudo apt update && sudo apt full-upgrade -y && sudo -b openvpn /home/lassi/Documents/TryHackMe/lassi.ovpn'
 
 # Upgrade and connect to OSCP labs
 alias OSCP='sudo apt update && sudo apt full-upgrade -y && sudo -b openvpn /home/lassi/Documents/OSCP/pwk2.ovpn'
 
 # Upgrade and connect to HTB
-alias HTB='echo TODO'
+alias HTB='sudo apt update && sudo apt full-upgrade -y && sudo -b openvpn /home/lassi/Documents/HackTheBox/lab.ovpn'
 
 # ------- PIP PROGRAMS -------- #
 # TODO make a more extensible wrapper for both creating and launching virtualenv binaries
