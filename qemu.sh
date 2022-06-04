@@ -41,7 +41,7 @@ EOF
 
 
 echo 'Updating system and installing programs...'
-sudo apt -qq update -y && sudo apt -qq full-upgrade -y && sudo apt -qq install -y python3-venv spice-vdagent terminator brave-browser flatpak seclists feroxbuster
+sudo apt -qq update -y && sudo apt -qq full-upgrade -y && sudo apt -qq install -y python3-venv spice-vdagent brave-browser flatpak seclists feroxbuster gobuster 
 
 
 # Autologin
@@ -92,13 +92,6 @@ alias OSCP='sudo apt update && sudo apt full-upgrade -y && sudo -b openvpn /home
 # Upgrade and connect to HTB
 alias HTB='sudo apt update && sudo apt full-upgrade -y && sudo -b openvpn /home/lassi/Documents/HackTheBox/lab.ovpn'
 
-# ------- PIP PROGRAMS -------- #
-# TODO make a more extensible wrapper for both creating and launching virtualenv binaries
-
-pwncat () {
-source ~/.virtualenvs/pwncat/bin/activate && pwncat-cs "\$@" && deactivate
-}
-
 # ------- PENTEST ALIASES -----#
 # TODO make something more reliable
 
@@ -123,23 +116,23 @@ xset s off -dpms
 EOF
 
 echo 'Installing pip binaries...'
+python3 -m pip install --user pipx
+python3 -m pipx ensurepath
+pipx install pwncat-cs
+pipx install autorecon
+pipx install bloodhound
 
-mkdir ~/.virtualenvs && cd ~/.virtualenvs
-python3 -m venv pwncat
-source ./pwncat/bin/activate
-pip install -q pwncat-cs
-deactivate
-cd
+
 echo 'Pwncat installed!'
 
-echo 'Installing flatpaks...'
-sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install -y flathub md.obsidian.Obsidian
+#echo 'Installing flatpaks...'
+#sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+#flatpak install -y flathub md.obsidian.Obsidian
 
 
 echo 'Installing startup programs...'
 mkdir -p ~/.config/autostart
-for program in kali-burpsuite terminator firefox-esr brave-browser; do
+for program in kali-burpsuite qterminal firefox-esr brave-browser; do
   cp /usr/share/applications/$program.desktop ~/.config/autostart/;
 done
 touch ~/.config/autostart/obsidian.desktop
