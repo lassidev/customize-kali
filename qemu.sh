@@ -41,7 +41,7 @@ EOF
 
 
 echo 'Updating system and installing programs...'
-sudo apt -qq update -y && sudo apt -qq full-upgrade -y && sudo apt -qq install -y python3-venv spice-vdagent brave-browser flatpak seclists feroxbuster gobuster 
+sudo apt -qq update -y && sudo apt -qq full-upgrade -y && sudo apt -qq install -y python3-venv spice-vdagent brave-browser flatpak seclists feroxbuster gobuster nvim
 
 
 # Autologin
@@ -105,7 +105,8 @@ alias cpwinpeas='wget -q https://github.com/carlospolop/PEASS-ng/releases/latest
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 # EDITOR
-export EDITOR=vim
+alias vim=nvim
+export EDITOR=nvim
 
 # Stupid power management
 xset s off -dpms
