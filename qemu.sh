@@ -129,7 +129,7 @@ echo 'Installing pip binaries...'
 python3 -m pip install --user pipx
 python3 -m pipx ensurepath
 pipx install pwncat-cs
-pipx install autorecon
+pipx install git+https://github.com/Tib3rius/AutoRecon.git
 pipx install bloodhound
 
 
