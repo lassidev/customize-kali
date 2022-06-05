@@ -41,7 +41,7 @@ EOF
 
 
 echo 'Updating system and installing programs...'
-sudo apt -qq update -y && sudo apt -qq full-upgrade -y && sudo apt -qq install -y python3-venv spice-vdagent brave-browser flatpak seclists feroxbuster gobuster nvim
+sudo apt -qq update -y && sudo apt -qq full-upgrade -y && sudo apt -qq install -y python3-venv spice-vdagent brave-browser flatpak seclists feroxbuster gobuster neovim
 
 
 # Autologin
@@ -98,6 +98,15 @@ alias HTB='sudo apt update && sudo apt full-upgrade -y && sudo -b openvpn /home/
 # Copy common files to current dir
 alias cplinpeas='wget -q https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh; echo "Lol script kiddie!"'
 alias cpwinpeas='wget -q https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEAS.bat; echo "Lol script kiddie!"'
+
+# ----------- PIP ------------- #
+
+# completions
+autoload -U bashcompinit
+bashcompinit
+eval "$(register-python-argcomplete pipx)"
+
+alias "pwncat"="pwncat-cs"
 
 # ---------- MISC ------------- #
 
