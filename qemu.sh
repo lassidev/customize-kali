@@ -41,7 +41,7 @@ EOF
 
 
 echo 'Updating system and installing programs...'
-sudo apt -qq update -y && sudo apt -qq full-upgrade -y && sudo apt -qq install -y python3-venv spice-vdagent brave-browser flatpak seclists feroxbuster gobuster neovim
+sudo apt -qq update -y && sudo apt -qq full-upgrade -y && sudo apt -qq install -y python3-venv spice-vdagent brave-browser flatpak seclists feroxbuster gobuster neovim remmina
 
 
 # Autologin
