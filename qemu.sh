@@ -41,7 +41,8 @@ EOF
 
 
 echo 'Updating system and installing programs...'
-sudo apt -qq update -y && sudo apt -qq full-upgrade -y && sudo apt -qq install -y python3-venv spice-vdagent brave-browser flatpak seclists feroxbuster gobuster neovim remmina
+# spice-vdagent
+sudo apt -qq update -y && sudo apt -qq full-upgrade -y && sudo apt -qq install -y python3-venv brave-browser flatpak seclists feroxbuster gobuster neovim remmina
 
 
 # Autologin
@@ -126,6 +127,8 @@ xset s off -dpms
 EOF
 
 echo 'Installing pip binaries...'
+# TODO silent install
+# TODO pipx doesnt work without a reboot?
 python3 -m pip install --user pipx
 python3 -m pipx ensurepath
 pipx install pwncat-cs
@@ -133,7 +136,7 @@ pipx install git+https://github.com/Tib3rius/AutoRecon.git
 pipx install bloodhound
 
 
-echo 'Pwncat installed!'
+echo 'Done'
 
 #echo 'Installing flatpaks...'
 #sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -142,11 +145,11 @@ echo 'Pwncat installed!'
 
 echo 'Installing startup programs...'
 mkdir -p ~/.config/autostart
-for program in kali-burpsuite qterminal firefox-esr brave-browser; do
+for program in kali-burpsuite qterminal firefox-esr brave-browser qterminal; do
   cp /usr/share/applications/$program.desktop ~/.config/autostart/;
 done
-touch ~/.config/autostart/obsidian.desktop
-ln -sf /var/lib/flatpak/app/md.obsidian.Obsidian/current/active/export/share/applications/md.obsidian.Obsidian.desktop ~/.config/autostart/obsidian.desktop
+#touch ~/.config/autostart/obsidian.desktop
+#ln -sf /var/lib/flatpak/app/md.obsidian.Obsidian/current/active/export/share/applications/md.obsidian.Obsidian.desktop ~/.config/autostart/obsidian.desktop
 
 echo 'Everything done. You might want to do additional customizations, such as the top bar, yourself.'
 echo 'TODO Obsidian, tmux, so much else'
