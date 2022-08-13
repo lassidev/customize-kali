@@ -144,6 +144,7 @@ EOF
 echo 'Installing pip binaries...'
 # TODO silent install
 # TODO pipx doesnt work without a reboot?
+export PATH=~/.local/bin:$PATH
 python3 -m pip install --user pipx
 python3 -m pipx ensurepath
 pipx install pwncat-cs
@@ -173,12 +174,9 @@ wget -q https://github.com/lassidev/customize-kali/raw/main/bravebookmarks.html 
 echo 'Everything done. You might want to do additional customizations, such as the top bar, yourself.'
 echo 'TODO make this script better please xD'
 
-read -r -p "Reboot? [y/N] " response
-case "$response" in
-    [yY][eE][sS]|[yY]) 
-        sudo reboot now
-        ;;
-    *)
-        exit 1
-        ;;
-esac
+read -p "Reboot now? (Y/N) " -n 1 -r
+echo    
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    sudo reboot now
+fi
