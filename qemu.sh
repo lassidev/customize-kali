@@ -173,12 +173,5 @@ done
 echo 'Downloading Brave bookmarks to Documents dir.'
 wget -q https://github.com/lassidev/customize-kali/raw/main/bravebookmarks.html -O ~/Documents/bravebookmarks.html
 
-echo 'Everything done. You might want to do additional customizations, such as the top bar, yourself.'
+echo 'Everything done. You will need to do additional stuff, such as the Burp cert, yourself.'
 echo 'TODO make this script better please'
-
-read -n1 -p "Reboot now? [y,n]" doit 
-case $doit in  
-  y|Y) sudo reboot now ;; 
-  n|N) echo OK ;; 
-  *) echo wdym ;; 
-esac
