@@ -150,9 +150,6 @@ eval "\$(pyenv virtualenv-init -)"
 # ---------------------------------- #
 EOF
 
-source ~/.zshrc
-
-
 echo 'Installing pip binaries...'
 # TODO silent install
 # TODO pipx doesnt work without a reboot?
