@@ -42,8 +42,10 @@ EOF
 
 echo 'Updating system and installing programs...'
 # spice-vdagent
-sudo apt -qq update -y && sudo apt -qq full-upgrade -y && sudo apt -qq install -y python3-venv brave-browser flatpak seclists feroxbuster gobuster neovim remmina
+sudo apt -qq update -y && sudo apt -qq full-upgrade -y && sudo apt -qq install -y python3-venv brave-browser flatpak seclists feroxbuster gobuster neovim remmina fonts-hack-ttf
 
+mkdir -p ~/.local/bin/enum4linux-ng
+wget -q https://github.com/cddmp/enum4linux-ng/raw/master/enum4linux-ng.py -O ~/.local/bin/enum4linux-ng/enum4linux-ng.py
 
 # Autologin
 sudo groupadd -r autologin
@@ -77,7 +79,8 @@ sudo tee -a ~/.zshrc << EOF >/dev/null
 # ---------- QEMU/SPICE ------------ #
 
 # Set randr resize on boot
-xrandr --output Virtual-1 --auto
+# TODO input into an init file or smth instead
+# xrandr --output Virtual-1 --auto
 
 # Xrandr alias
 alias rs='xrandr --output Virtual-1 --auto'
@@ -100,6 +103,9 @@ alias HTB='sudo apt update && sudo apt full-upgrade -y && sudo -b openvpn /home/
 alias cplinpeas='wget -q https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh; echo "Lol script kiddie!"'
 alias cpwinpeas='wget -q https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEAS.bat; echo "Lol script kiddie!"'
 
+# New generation enum4linux. 
+alias enum4linux='/home/lassi/.local/bin/enum4linux-ng/enum4linux-ng.py'
+
 # ----------- PIP ------------- #
 
 # completions
@@ -120,6 +126,15 @@ export EDITOR=nvim
 
 # Stupid power management
 xset s off -dpms
+
+# ----------- PYENV ----------- #
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+        eval "$(pyenv init --path)"
+fi
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # ---------------------------------- #
 # -------- END CUSTOMIZATION ------- #
@@ -145,14 +160,18 @@ echo 'Done'
 
 echo 'Installing startup programs...'
 mkdir -p ~/.config/autostart
-for program in kali-burpsuite qterminal firefox-esr brave-browser qterminal; do
+for program in kali-burpsuite terminator firefox-esr brave-browser; do
   cp /usr/share/applications/$program.desktop ~/.config/autostart/;
 done
 #touch ~/.config/autostart/obsidian.desktop
 #ln -sf /var/lib/flatpak/app/md.obsidian.Obsidian/current/active/export/share/applications/md.obsidian.Obsidian.desktop ~/.config/autostart/obsidian.desktop
 
+# TODO how can this be installed via command line?
+echo 'Downloading Brave bookmarks to Documents dir.'
+wget -q https://github.com/lassidev/customize-kali/raw/main/bravebookmarks.html -O ~/Documents/bravebookmarks.html
+
 echo 'Everything done. You might want to do additional customizations, such as the top bar, yourself.'
-echo 'TODO Obsidian, tmux, so much else'
+echo 'TODO make this script better please xD'
 
 read -r -p "Reboot? [y/N] " response
 case "$response" in
