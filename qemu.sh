@@ -52,6 +52,8 @@ wget -q https://github.com/cddmp/enum4linux-ng/raw/master/enum4linux-ng.py -O ~/
 echo 'Installing pyenvs...'
 # dependencies. probably already installed tho
 sudo apt -qq install -y build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
+
+sleep 1
 curl https://pyenv.run | bash
 
 # Autologin
