@@ -113,14 +113,14 @@ alias cplinpeas='wget -q https://github.com/carlospolop/PEASS-ng/releases/latest
 alias cpwinpeas='wget -q https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEAS.bat; echo "Lol script kiddie!"'
 
 # New generation enum4linux. 
-alias enum4linux='/home/lassi/.local/bin/enum4linux-ng/enum4linux-ng.py'
+alias enum4linux='~/.local/bin/enum4linux-ng/enum4linux-ng.py'
 
 # ----------- PIP ------------- #
 
 # completions
 autoload -U bashcompinit
 bashcompinit
-eval "$(register-python-argcomplete pipx)"
+eval "\$(register-python-argcomplete pipx)"
 
 alias "pwncat"="pwncat-cs"
 
@@ -137,18 +137,21 @@ export EDITOR=nvim
 xset s off -dpms
 
 # ----------- PYENV ----------- #
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+export PYENV_ROOT="\$HOME/.pyenv"
+export PATH="\$PYENV_ROOT/bin:\$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
-        eval "$(pyenv init --path)"
+        eval "\$(pyenv init --path)"
 fi
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+eval "\$(pyenv init -)"
+eval "\$(pyenv virtualenv-init -)"
 
 # ---------------------------------- #
 # -------- END CUSTOMIZATION ------- #
 # ---------------------------------- #
 EOF
+
+source ~/.zshrc
+
 
 echo 'Installing pip binaries...'
 # TODO silent install
