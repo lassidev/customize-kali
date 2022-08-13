@@ -49,6 +49,11 @@ sudo apt -qq update -y && sudo apt -qq full-upgrade -y && sudo apt -qq install -
 mkdir -p ~/.local/bin/enum4linux-ng
 wget -q https://github.com/cddmp/enum4linux-ng/raw/master/enum4linux-ng.py -O ~/.local/bin/enum4linux-ng/enum4linux-ng.py
 
+echo 'Installing pyenvs...'
+# dependencies. probably already installed tho
+sudo apt -qq install build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
+curl https://pyenv.run | bash
+
 # Autologin
 sudo groupadd -r autologin
 sudo gpasswd -a $USER autologin
