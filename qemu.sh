@@ -5,6 +5,8 @@ if [ "$EUID" == 0 ]
   exit 1
 fi
 
+xrandr --output Virtual-1 --auto
+
 cat << "EOF"
 
 oooo                               o8o         .oooooo.       oooo                  oooo   o8o  
