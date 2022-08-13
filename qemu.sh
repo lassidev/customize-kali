@@ -44,7 +44,7 @@ EOF
 
 echo 'Updating system and installing programs...'
 # spice-vdagent
-sudo apt -qq update -y && sudo apt -qq full-upgrade -y && sudo apt -qq install -y python3-venv brave-browser flatpak seclists feroxbuster gobuster neovim remmina fonts-hack-ttf
+sudo apt -qq update -y && sudo apt -qq full-upgrade -y && sudo apt -qq install -y python3-venv brave-browser flatpak seclists feroxbuster gobuster neovim remmina terminator fonts-hack-ttf
 
 mkdir -p ~/.local/bin/enum4linux-ng
 wget -q https://github.com/cddmp/enum4linux-ng/raw/master/enum4linux-ng.py -O ~/.local/bin/enum4linux-ng/enum4linux-ng.py
@@ -174,11 +174,11 @@ echo 'Downloading Brave bookmarks to Documents dir.'
 wget -q https://github.com/lassidev/customize-kali/raw/main/bravebookmarks.html -O ~/Documents/bravebookmarks.html
 
 echo 'Everything done. You might want to do additional customizations, such as the top bar, yourself.'
-echo 'TODO make this script better please xD'
+echo 'TODO make this script better please'
 
-read -p "Reboot now? (Y/N) " -n 1 -r
-echo    
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-    sudo reboot now
-fi
+read -n1 -p "Reboot now? [y,n]" doit 
+case $doit in  
+  y|Y) sudo reboot now ;; 
+  n|N) echo OK ;; 
+  *) echo wdym ;; 
+esac
