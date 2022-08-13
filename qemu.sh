@@ -169,7 +169,24 @@ echo 'Done'
 
 
 echo 'Installing startup programs...'
+
 mkdir -p ~/.config/autostart
+
+tee -a ~/.config/autostart/resize.desktop << EOF >/dev/null 
+[Desktop Entry]
+Encoding=UTF-8
+Version=0.9.4
+Type=Application
+Name=resize
+Comment=resize
+Exec=/bin/bash -c 'sleep 3; /usr/bin/xrandr --output Virtual-1 --auto'
+OnlyShowIn=XFCE;
+RunHook=0
+StartupNotify=false
+Terminal=false
+Hidden=false
+EOF
+
 for program in kali-burpsuite terminator firefox-esr brave-browser; do
   cp /usr/share/applications/$program.desktop ~/.config/autostart/;
 done
