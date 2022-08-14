@@ -116,6 +116,8 @@ alias cpwinpeas='wget -q https://github.com/carlospolop/PEASS-ng/releases/latest
 alias enum4linux='~/.local/bin/enum4linux-ng/enum4linux-ng.py'
 
 # ----------- PIP ------------- #
+# PATH
+export PATH="\$HOME/.local/bin:\$PATH"
 
 # completions
 autoload -U bashcompinit
