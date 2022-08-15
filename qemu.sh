@@ -44,7 +44,7 @@ EOF
 
 echo 'Updating system and installing programs...'
 # spice-vdagent
-sudo apt -qq update -y && sudo apt -qq full-upgrade -y && sudo apt -qq install -y python3-venv brave-browser flatpak seclists feroxbuster gobuster neovim remmina terminator fonts-hack-ttf python3-argcomplete code-oss
+sudo apt -qq update -y && sudo apt -qq full-upgrade -y && sudo apt -qq install -y python3-venv brave-browser flatpak seclists feroxbuster gobuster neovim remmina terminator fonts-hack-ttf python3-argcomplete code-oss rlwrap
 
 mkdir -p ~/.local/bin/enum4linux-ng
 wget -q https://github.com/cddmp/enum4linux-ng/raw/master/enum4linux-ng.py -O ~/.local/bin/enum4linux-ng/enum4linux-ng.py
